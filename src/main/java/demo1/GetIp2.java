@@ -1,7 +1,6 @@
 package demo1;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -50,7 +49,7 @@ public class GetIp2 extends HttpServlet {
 		//Last-Modified:页面的最后生成时间 
 	     response.setDateHeader("Last-Modified",new Date().getTime());
 	    //Expires:过时期限值 
-	     response.setDateHeader("Expires", new Date().getTime() + 30000);
+	     response.setDateHeader("Expires", System.currentTimeMillis() + 30000);
 	     // 获取所有的cookie值
 	    Cookie[] cookies = request.getCookies();  
 	    Cookie cookie1 = null;
@@ -62,8 +61,6 @@ public class GetIp2 extends HttpServlet {
 		}
 	    request.setAttribute("map", map);
 	    request.setAttribute("list", list);
-	    PrintWriter out = response.getWriter();
-	    out.write("hello world");
 		request.getRequestDispatcher("index.jsp").forward(request,response);
 	}
 	
